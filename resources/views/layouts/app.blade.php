@@ -1,16 +1,16 @@
 <!doctype html>
-<html  lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
     @vite(['resources/sass/app.scss','resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md  shadow-sm">
+    <nav class="navbar navbar-expand-md ">
         <div class="container">
             <a class="navbar-brand"
                @guest href="{{ url('/') }}" @else href="{{ route('home') }}" @endguest >
@@ -69,6 +69,20 @@
     <main class="py-4">
         @yield('content')
     </main>
+
+    <footer class=" rounded-0 text-center ">
+        <div class="container footer">
+{{--            <div class="pt-4 mb-4 row justify-content-center">--}}
+{{--                <p>Footer information bla bla</p>--}}
+{{--            </div>--}}
+            <div class="row justify-content-center">
+                <p class="col-6">
+                    Your favorite <span class="text-primary highlight fw-bold"> assets </span>
+                    and <span  class="text-primary highlight fw-bold"> portfolio </span>in one place.
+                </p>
+            </div>
+        </div>
+    </footer>
 </div>
 </body>
 </html>

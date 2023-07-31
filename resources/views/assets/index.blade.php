@@ -1,15 +1,16 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <div class="card p-5">
+        <div class="card glass p-5">
             <div class="card-body">
-                <p class="text-center display-2">Portfolio</p>
-                <p class="text-center display-6">My Assets</p>
+                <p class=" text-center display-2  mt-5">My Assets</p>
+                <p class=" text-center display-2 fs-4 mb-5">One place to track all your favorite assets!</p>
             </div>
             <div class="row">
                 {{--acoes start--}}
                 <div class="col-3 p-4 ">
-                    <h1 class="text-center mb-3">Ações</h1>
+                    <h1 class="text-center mb-0 ">Ações</h1>
+                    <p class="fs-6 text-center mb-3">Bovespa</p>
                     <form action="{{ route('assets.store') }}" method="POST" class="mb-4 d-flex justify-content-evenly">
                         @csrf
                         <select class="w-75 form-select js-example-basic-single" name="code">
@@ -43,7 +44,8 @@
                 {{-- acoes end--}}
                 {{--fiis start--}}
                 <div class="col-3 p-4 ">
-                    <h1 class="text-center mb-3">FIIs</h1>
+                    <h1 class="text-center mb-0 ">FIIs</h1>
+                    <p class="fs-6 text-center mb-3">Bovespa</p>
                     <form action="{{ route('assets.store') }}" method="POST" class="mb-4 d-flex justify-content-evenly">
                         @csrf
                         <select class="w-75 form-select js-example-basic-single" name="code">
@@ -77,7 +79,8 @@
                 {{-- fiis end--}}
                 {{--stocks start--}}
                 <div class="col-3 p-4 ">
-                    <h1 class="text-center mb-3">Stocks</h1>
+                    <h1 class="text-center mb-0 ">Stocks</h1>
+                    <p class="fs-6 text-center mb-3">Nasdaq</p>
                     <form action="{{ route('assets.store') }}" method="POST" class="mb-4 d-flex justify-content-evenly">
                         @csrf
                         <select class="w-75 form-select js-example-basic-single" name="code">
@@ -113,7 +116,8 @@
                 {{--stocks end--}}
                 {{--crypto start--}}
                 <div class="col-3 p-4 ">
-                    <h1 class="text-center mb-3">Crypto</h1>
+                    <h1 class="text-center mb-0 ">Crypto</h1>
+                    <p class="fs-6 text-center mb-3">Most Popular</p>
                     <form action="{{ route('assets.store') }}" method="POST" class="mb-4 d-flex justify-content-evenly">
                         @csrf
                         <select class="w-75 form-select js-example-basic-single" name="code">
