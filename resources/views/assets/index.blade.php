@@ -80,7 +80,6 @@
                     <h1 class="text-center mb-3">Stocks</h1>
                     <form action="{{ route('assets.store') }}" method="POST" class="mb-4 d-flex justify-content-evenly">
                         @csrf
-                        {{--                        @dd(\App\Http\Helpers\AssetIndexHelper::stocksIndex())--}}
                         <select class="w-75 form-select js-example-basic-single" name="code">
                             @forelse(\App\Http\Helpers\AssetIndexHelper::stocksIndex() as $item)
                                 <option data-select2-id="{{$item}}">{{ $item }}</option>
