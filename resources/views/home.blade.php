@@ -6,7 +6,7 @@
         <div class="card mt-4 px-2">
             <div class="card-body ">
                 <div class="row">
-                <a href="{{route('portfolio.index')}}" class=" text-center fs-4 rounded col-2 p-3 border border-primary">
+                <a href="{{route('assets.index')}}" class=" text-center fs-4 rounded col-2 p-3 border border-primary">
                     Portfolio
                 </a>
                 </div>
