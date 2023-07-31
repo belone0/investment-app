@@ -9,7 +9,7 @@
             <div class="row">
                 {{--acoes start--}}
                 <div class="col-3 p-4 ">
-                    <h1 class="text-center mb-3">Acoes</h1>
+                    <h1 class="text-center mb-3">Ações</h1>
                     <form action="{{ route('assets.store') }}" method="POST" class="mb-4 d-flex justify-content-evenly">
                         @csrf
                         <select class="w-75 form-select js-example-basic-single" name="code">
@@ -23,9 +23,9 @@
                     </form>
                     @foreach(auth()->user()->acoes as $asset)
                         <div class=" mb-3 p-1 d-flex justify-content-between">
-                            <i class=" fs-5 fa-solid fa-coins"></i>
+                            <i class="fs-3 fa-solid fa-coins"></i>
                             <p class="fs-5">{{$asset->code}}</p>
-                            <p class="fs-5">{{\App\Http\Helpers\AssetIndexHelper::getAssetInfo($asset)}}</p>
+                            <p class="fs-5"><span style="font-size: 10px">R$</span>{{\App\Http\Helpers\AssetIndexHelper::getAssetInfo($asset)}}</p>
                             <form method="POST" action="{{route('assets.destroy',$asset)}}" accept-charset="UTF-8"
                                   style="display:inline">
                                 {{ method_field('DELETE') }}
@@ -57,7 +57,7 @@
                         <div class=" mb-3 p-1 d-flex justify-content-between">
                             <i class="fs-3 fa-solid fa-coins"></i>
                             <p class="fs-5">{{$asset->code}}</p>
-                            <p class="fs-5">{{\App\Http\Helpers\AssetIndexHelper::getAssetInfo($asset)}}</p>
+                            <p class="fs-5"><span style="font-size: 10px">R$</span>{{\App\Http\Helpers\AssetIndexHelper::getAssetInfo($asset)}}</p>
                             <form method="POST" action="{{route('assets.destroy',$asset)}}" accept-charset="UTF-8"
                                   style="display:inline">
                                 {{ method_field('DELETE') }}
@@ -76,10 +76,13 @@
                     <h1 class="text-center mb-3">Stocks</h1>
                     <form action="{{ route('assets.store') }}" method="POST" class="mb-4 d-flex justify-content-evenly">
                         @csrf
+{{--                        @dd(\App\Http\Helpers\AssetIndexHelper::stocksIndex())--}}
                         <select class="w-75 form-select js-example-basic-single" name="code">
-                            @foreach(\App\Http\Helpers\AssetIndexHelper::stocksIndex() as $item)
+                            @forelse(\App\Http\Helpers\AssetIndexHelper::stocksIndex() as $item)
                                 <option data-select2-id="{{$item}}">{{ $item }}</option>
-                            @endforeach
+                            @empty
+                                <option value="">Ocorreu um erro</option>
+                            @endforelse
                         </select>
                         <input type="hidden" name="type" id="type" value="stock">
                         <button type="submit" class=" btn"><i class="text-primary fa-solid fa-add"></i>
@@ -88,7 +91,8 @@
                     @foreach(auth()->user()->stocks as $asset)
                         <div class=" mb-3 p-1 d-flex justify-content-between">
                             <i class="fs-3 fa-solid fa-coins"></i>
-                            <h3 class="">{{$asset->code}}</h3>
+                            <p class="fs-5">{{$asset->code}}</p>
+                            <p class="fs-5"><span style="font-size: 10px">$</span>{{\App\Http\Helpers\AssetIndexHelper::getAssetInfo($asset)}}</p>
                             <form method="POST" action="{{route('assets.destroy',$asset)}}" accept-charset="UTF-8"
                                   style="display:inline">
                                 {{ method_field('DELETE') }}
@@ -119,8 +123,8 @@
                     @foreach(auth()->user()->crypto as $asset)
                         <div class="p-1  mb-3 d-flex justify-content-between">
                             <img class="me-2" width="30" height="30" src="{{\App\Http\Helpers\AssetIndexHelper::getAssetInfo($asset)['image']}}" alt="">
-                            <p class="fs-5">{{$asset->code}}</h3>
-                            <p class="fs-5">{{\App\Http\Helpers\AssetIndexHelper::getAssetInfo($asset)['price']}}</p>
+                            <p class="fs-5">{{$asset->code}}</p>
+                            <p class="fs-5"><span style="font-size: 10px">R$</span>{{\App\Http\Helpers\AssetIndexHelper::getAssetInfo($asset)['price']}}</p>
                             <form method="POST" action="{{route('assets.destroy',$asset)}}" accept-charset="UTF-8"
                                   style="display:inline">
                                 {{ method_field('DELETE') }}
@@ -140,7 +144,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
     <script>
         $('.js-example-basic-single').select2({
-            placeholder: 'cugner',
+            placeholder: 'Selecione um ativo',
             theme: 'bootstrap'
         });
     </script>

@@ -12,7 +12,6 @@ class AssetIndexHelper
     public static function acoesIndex(){
         $response = Http::get('https://brapi.dev/api/available');
 
-        $acoes = [];
         foreach($response['stocks'] as $acao){
             if(!Str::endsWith($acao, ['11','34','F','39','B'])){
                 $acoes[] = $acao;
@@ -24,7 +23,6 @@ class AssetIndexHelper
     public static function fiisIndex(){
         $response = Http::get('https://brapi.dev/api/available');
 
-        $fiis = [];
         foreach($response['stocks'] as $fii){
             if(Str::endsWith($fii, '11')){
                 $fiis[] = $fii;
@@ -35,11 +33,25 @@ class AssetIndexHelper
     }
 
     public static function stocksIndex(){
-//        $response = Http::get('https://financialmodelingprep.com/api/v3/sp500_constituent?apikey=311f92490553a7c243ff0bd7ab3d3366');
-//        $stocks = [];
-//
-//        return $response->json();
+        try {
+            $client = new \GuzzleHttp\Client();
 
+            $response = $client->request('GET', 'https://twelve-data1.p.rapidapi.com/stocks?exchange=NASDAQ&format=json', [
+                'headers' => [
+                    'X-RapidAPI-Host' => 'twelve-data1.p.rapidapi.com',
+                    'X-RapidAPI-Key' => 'b228328727msh65ef4c24bb9ffa9p1dbe3ejsn9b68bfde22ec',
+                ],
+            ]);
+
+            $data = json_decode($response->getBody())->data;
+
+            foreach($data as $stock){
+                $stocks[] = $stock->symbol;
+            }
+            return $stocks;
+        }catch(\Throwable $e){
+            return json_encode('Erro no servidor');
+        }
     }
 
     public static function cryptoIndex(){
@@ -48,12 +60,11 @@ class AssetIndexHelper
     }
 
     public static function getAssetInfo(Asset $asset){
-        if($asset->type == 'stock')return;
         if($asset->type == 'crypto'){
             $response = Http::get('https://brapi.dev/api/v2/crypto?coin='.$asset->code.'&currency=BRL');
             $price = $response['coins'][0]['regularMarketPrice'];
             $image = $response['coins'][0]['coinImageUrl'];
-            $info['price'] = $price;
+            $info['price'] = round($price,2);
             $info['image'] = $image;
             return $info;
         }
