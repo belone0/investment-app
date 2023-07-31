@@ -7,6 +7,101 @@
                 <p class="text-center display-6">My Assets</p>
             </div>
             <div class="row">
+                {{--acoes start--}}
+                <div class="col-3 p-4 ">
+                    <h1 class="text-center mb-3">Acoes</h1>
+                    <form action="{{ route('assets.store') }}" method="POST" class="mb-4 d-flex justify-content-evenly">
+                        @csrf
+                        <select class="w-75 form-select js-example-basic-single" name="code">
+                            @foreach(\App\Http\Helpers\AssetIndexHelper::acoesIndex() as $item)
+                                <option data-select2-id="{{$item}}">{{ $item }}</option>
+                            @endforeach
+                        </select>
+                        <input type="hidden" name="type" id="type" value="acao">
+                        <button type="submit" class="btn btn-primary rounded-circle"><i class="fa-solid fa-add"></i>
+                        </button>
+                    </form>
+                    @foreach(auth()->user()->acoes as $asset)
+                        <div class=" mb-3 p-1 d-flex justify-content-between">
+                            <i class=" fs-5 fa-solid fa-coins"></i>
+                            <p class="fs-5">{{$asset->code}}</p>
+                            <p class="fs-5">{{\App\Http\Helpers\AssetIndexHelper::getAssetInfo($asset)}}</p>
+                            <form method="POST" action="{{route('assets.destroy',$asset)}}" accept-charset="UTF-8"
+                                  style="display:inline">
+                                {{ method_field('DELETE') }}
+                                @csrf
+                                <button type="submit" class="btn btn-outline-danger rounded-circle "
+                                        title="Remove Asset"
+                                        onclick="return confirm(&quot;Are you sure you want to delete?&quot;)"><i
+                                        class="fa fa-trash" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+                    @endforeach
+                </div>
+                {{-- acoes end--}}
+                {{--fiis start--}}
+                <div class="col-3 p-4 ">
+                    <h1 class="text-center mb-3">FIIs</h1>
+                    <form action="{{ route('assets.store') }}" method="POST" class="mb-4 d-flex justify-content-evenly">
+                        @csrf
+                        <select class="w-75 form-select js-example-basic-single" name="code">
+                            @foreach(\App\Http\Helpers\AssetIndexHelper::fiisIndex() as $item)
+                                <option data-select2-id="{{$item}}">{{ $item }}</option>
+                            @endforeach
+                        </select>
+                        <input type="hidden" name="type" id="type" value="fii">
+                        <button type="submit" class="btn btn-primary rounded-circle"><i class="fa-solid fa-add"></i>
+                        </button>
+                    </form>
+                    @foreach(auth()->user()->fiis as $asset)
+                        <div class=" mb-3 p-1 d-flex justify-content-between">
+                            <i class="fs-3 fa-solid fa-coins"></i>
+                            <h3 class="">{{$asset->code}}</h3>
+                            <form method="POST" action="{{route('assets.destroy',$asset)}}" accept-charset="UTF-8"
+                                  style="display:inline">
+                                {{ method_field('DELETE') }}
+                                @csrf
+                                <button type="submit" class="btn btn-outline-danger rounded-circle "
+                                        title="Remove Asset"
+                                        onclick="return confirm(&quot;Tem certeza que deseja exluir?&quot;)"><i
+                                        class="fa fa-trash" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+                    @endforeach
+                </div>
+                {{-- fiis end--}}
+                {{--stocks start--}}
+                <div class="col-3 p-4 ">
+                    <h1 class="text-center mb-3">Stocks</h1>
+                    <form action="{{ route('assets.store') }}" method="POST" class="mb-4 d-flex justify-content-evenly">
+                        @csrf
+                        <select class="w-75 form-select js-example-basic-single" name="code">
+                            @foreach(\App\Http\Helpers\AssetIndexHelper::stocksIndex() as $item)
+                                <option data-select2-id="{{$item}}">{{ $item }}</option>
+                            @endforeach
+                        </select>
+                        <input type="hidden" name="type" id="type" value="stock">
+                        <button type="submit" class="btn btn-primary rounded-circle"><i class="fa-solid fa-add"></i>
+                        </button>
+                    </form>
+                    @foreach(auth()->user()->stocks as $asset)
+                        <div class=" mb-3 p-1 d-flex justify-content-between">
+                            <i class="fs-3 fa-solid fa-coins"></i>
+                            <h3 class="">{{$asset->code}}</h3>
+                            <form method="POST" action="{{route('assets.destroy',$asset)}}" accept-charset="UTF-8"
+                                  style="display:inline">
+                                {{ method_field('DELETE') }}
+                                @csrf
+                                <button type="submit" class="btn btn-outline-danger rounded-circle "
+                                        title="Remove Asset"
+                                        onclick="return confirm(&quot;Are you sure you want to delete?&quot;)"><i
+                                        class="fa fa-trash" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+                    @endforeach
+                </div>
+                {{--stocks end--}}
+                {{--crypto start--}}
                 <div class="col-3 p-4 ">
                     <h1 class="text-center mb-3">Crypto</h1>
                     <form action="{{ route('assets.store') }}" method="POST" class="mb-4 d-flex justify-content-evenly">
@@ -17,18 +112,24 @@
                             @endforeach
                         </select>
                         <input type="hidden" name="type" id="type" value="crypto">
-                        <button type="submit" class="btn btn-primary rounded-circle"><i class="fa-solid fa-add"></i></button>
+                        <button type="submit" class="btn btn-primary rounded-circle"><i class="fa-solid fa-add"></i>
+                        </button>
                     </form>
-                    @foreach(auth()->user()->assets as $asset)
-                        <div class=" mb-3 d-flex justify-content-between">
+                    @foreach(auth()->user()->crypto as $asset)
+                        <div class="p-1  mb-3 d-flex justify-content-between">
                             <i class="fs-3 fa-solid fa-coins"></i>
                             <h3 class="">{{$asset->code}}</h3>
-                            <form method="POST" action="{{route('assets.destroy',$asset)}}" accept-charset="UTF-8" style="display:inline">
+                            <form method="POST" action="{{route('assets.destroy',$asset)}}" accept-charset="UTF-8"
+                                  style="display:inline">
                                 {{ method_field('DELETE') }}
                                 @csrf
-                                <button type="submit" class="btn btn-danger " title="Remove Asset" onclick="return confirm(&quot;Tem certeza que deseja exluir?&quot;)"><i class="fa fa-trash" aria-hidden="true"></i> </button>
-                            </form>                        </div>
+                                <button type="submit" class="btn btn-outline-danger rounded-circle" title="Remove Asset"
+                                        onclick="return confirm(&quot;Are you sure you want to delete?&quot;)"><i
+                                        class="fa fa-trash" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
                     @endforeach
+                    {{--crypto end--}}
                 </div>
             </div>
         </div>

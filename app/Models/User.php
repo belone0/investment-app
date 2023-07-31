@@ -29,8 +29,21 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function assets(): HasMany
+    public function crypto(): HasMany
     {
-        return $this->hasMany(Asset::class);
+        return $this->hasMany(Asset::class)->where('type','crypto');
     }
+    public function acoes(): HasMany
+    {
+        return $this->hasMany(Asset::class)->where('type','acao');
+    }
+    public function fiis(): HasMany
+    {
+        return $this->hasMany(Asset::class)->where('type','fii');
+    }
+    public function stocks(): HasMany
+    {
+        return $this->hasMany(Asset::class)->where('type','stock');
+    }
+
 }
