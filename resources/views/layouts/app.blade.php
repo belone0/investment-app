@@ -14,7 +14,7 @@
         <div class="container">
             <a class="navbar-brand"
                @guest href="{{ url('/') }}" @else href="{{ route('home') }}" @endguest >
-                {{ config('app.name', 'investment-app') }}
+                {{ config('app.name', 'mysasset') }}
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

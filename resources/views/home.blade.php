@@ -2,39 +2,28 @@
 
 @section('content')
     <div class="container">
-        <p class="mt-3 text-primary display-6 ">Hey  {{auth()->user()->name}}! Welcome back</p>
-        <div class="card glass mt-4 px-2">
-            <div class="card-body ">
-                <div class="row">
-                <a href="{{route('assets.index')}}" class=" text-center fs-4 rounded col-2 p-3 border border-primary">
-                    Portfolio
-                </a>
-                </div><div class="row">
-                <a href="{{route('assets.index')}}" class=" text-center fs-4 rounded col-2 p-3 border border-primary">
-                    Portfolio
-                </a>
-                </div><div class="row">
-                <a href="{{route('assets.index')}}" class=" text-center fs-4 rounded col-2 p-3 border border-primary">
-                    Portfolio
-                </a>
-                </div><div class="row">
-                <a href="{{route('assets.index')}}" class=" text-center fs-4 rounded col-2 p-3 border border-primary">
-                    Portfolio
-                </a>
-                </div><div class="row">
-                <a href="{{route('assets.index')}}" class=" text-center fs-4 rounded col-2 p-3 border border-primary">
-                    Portfolio
-                </a>
-                </div><div class="row">
-                <a href="{{route('assets.index')}}" class=" text-center fs-4 rounded col-2 p-3 border border-primary">
-                    Portfolio
-                </a>
-                </div><div class="row">
-                <a href="{{route('assets.index')}}" class=" text-center fs-4 rounded col-2 p-3 border border-primary">
-                    Portfolio
-                </a>
+        <div class="row ">
+            <p class=" text-center display-3 mb-0">Home </p>
+        </div>
+
+        <div class="row d-flex justify-content-center gap-4">
+            <div class="col-12 col-md-3 card glass mt-4 gap-2 ">
+                <div class="card-body ">
+                    <a href="{{route('assets.index')}}" class="text-center fs-4 rounded p-3 border border-primary">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                        Assets
+                    </a>
+                </div>
+            </div>
+            <div class="col-12 col-md-3 card glass mt-4 ">
+                <div class="card-body ">
+                    <a href="{{route('assets.index')}}" class="text-center fs-4 rounded p-3 border border-primary">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                        Assets
+                    </a>
                 </div>
             </div>
         </div>
+
     </div>
 @endsection
