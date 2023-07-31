@@ -35,10 +35,10 @@ class AssetIndexHelper
     }
 
     public static function stocksIndex(){
-        $response = Http::get('https://financialmodelingprep.com/api/v3/sp500_constituent?apikey=311f92490553a7c243ff0bd7ab3d3366');
-        $stocks = [];
-
-        return $response->json();
+//        $response = Http::get('https://financialmodelingprep.com/api/v3/sp500_constituent?apikey=311f92490553a7c243ff0bd7ab3d3366');
+//        $stocks = [];
+//
+//        return $response->json();
 
     }
 

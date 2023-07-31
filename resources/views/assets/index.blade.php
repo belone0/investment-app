@@ -18,7 +18,7 @@
                             @endforeach
                         </select>
                         <input type="hidden" name="type" id="type" value="acao">
-                        <button type="submit" class="btn btn-primary rounded-circle"><i class="fa-solid fa-add"></i>
+                        <button type="submit" class=" btn"><i class="text-primary fa-solid fa-add"></i>
                         </button>
                     </form>
                     @foreach(auth()->user()->acoes as $asset)
@@ -30,10 +30,10 @@
                                   style="display:inline">
                                 {{ method_field('DELETE') }}
                                 @csrf
-                                <button type="submit" class="btn btn-outline-danger rounded-circle "
+                                <button type="submit" class="btn  "
                                         title="Remove Asset"
                                         onclick="return confirm(&quot;Are you sure you want to delete?&quot;)"><i
-                                        class="fa fa-trash" aria-hidden="true"></i></button>
+                                        class="fa fa-trash text-danger" aria-hidden="true"></i></button>
                             </form>
                         </div>
                     @endforeach
@@ -50,21 +50,22 @@
                             @endforeach
                         </select>
                         <input type="hidden" name="type" id="type" value="fii">
-                        <button type="submit" class="btn btn-primary rounded-circle"><i class="fa-solid fa-add"></i>
+                        <button type="submit" class=" btn"><i class="text-primary fa-solid fa-add"></i>
                         </button>
                     </form>
                     @foreach(auth()->user()->fiis as $asset)
                         <div class=" mb-3 p-1 d-flex justify-content-between">
                             <i class="fs-3 fa-solid fa-coins"></i>
-                            <h3 class="">{{$asset->code}}</h3>
+                            <p class="fs-5">{{$asset->code}}</p>
+                            <p class="fs-5">{{\App\Http\Helpers\AssetIndexHelper::getAssetInfo($asset)}}</p>
                             <form method="POST" action="{{route('assets.destroy',$asset)}}" accept-charset="UTF-8"
                                   style="display:inline">
                                 {{ method_field('DELETE') }}
                                 @csrf
-                                <button type="submit" class="btn btn-outline-danger rounded-circle "
+                                <button type="submit" class="btn  "
                                         title="Remove Asset"
                                         onclick="return confirm(&quot;Tem certeza que deseja exluir?&quot;)"><i
-                                        class="fa fa-trash" aria-hidden="true"></i></button>
+                                        class="fa fa-trash text-danger" aria-hidden="true"></i></button>
                             </form>
                         </div>
                     @endforeach
@@ -81,7 +82,7 @@
                             @endforeach
                         </select>
                         <input type="hidden" name="type" id="type" value="stock">
-                        <button type="submit" class="btn btn-primary rounded-circle"><i class="fa-solid fa-add"></i>
+                        <button type="submit" class=" btn"><i class="text-primary fa-solid fa-add"></i>
                         </button>
                     </form>
                     @foreach(auth()->user()->stocks as $asset)
@@ -92,10 +93,10 @@
                                   style="display:inline">
                                 {{ method_field('DELETE') }}
                                 @csrf
-                                <button type="submit" class="btn btn-outline-danger rounded-circle "
+                                <button type="submit" class="btn  "
                                         title="Remove Asset"
                                         onclick="return confirm(&quot;Are you sure you want to delete?&quot;)"><i
-                                        class="fa fa-trash" aria-hidden="true"></i></button>
+                                        class="fa fa-trash text-danger" aria-hidden="true"></i></button>
                             </form>
                         </div>
                     @endforeach
@@ -112,20 +113,21 @@
                             @endforeach
                         </select>
                         <input type="hidden" name="type" id="type" value="crypto">
-                        <button type="submit" class="btn btn-primary rounded-circle"><i class="fa-solid fa-add"></i>
+                        <button type="submit" class=" btn"><i class="text-primary fa-solid fa-add"></i>
                         </button>
                     </form>
                     @foreach(auth()->user()->crypto as $asset)
                         <div class="p-1  mb-3 d-flex justify-content-between">
-                            <i class="fs-3 fa-solid fa-coins"></i>
-                            <h3 class="">{{$asset->code}}</h3>
+                            <img class="me-2" width="30" height="30" src="{{\App\Http\Helpers\AssetIndexHelper::getAssetInfo($asset)['image']}}" alt="">
+                            <p class="fs-5">{{$asset->code}}</h3>
+                            <p class="fs-5">{{\App\Http\Helpers\AssetIndexHelper::getAssetInfo($asset)['price']}}</p>
                             <form method="POST" action="{{route('assets.destroy',$asset)}}" accept-charset="UTF-8"
                                   style="display:inline">
                                 {{ method_field('DELETE') }}
                                 @csrf
-                                <button type="submit" class="btn btn-outline-danger rounded-circle" title="Remove Asset"
+                                <button type="submit" class="btn " title="Remove Asset"
                                         onclick="return confirm(&quot;Are you sure you want to delete?&quot;)"><i
-                                        class="fa fa-trash" aria-hidden="true"></i></button>
+                                        class="fa fa-trash text-danger" aria-hidden="true"></i></button>
                             </form>
                         </div>
                     @endforeach
