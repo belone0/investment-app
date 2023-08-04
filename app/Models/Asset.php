@@ -12,7 +12,8 @@ class Asset extends Model
     protected $fillable = [
         'user_id',
         'code',
-        'type'
+        'type',
+        'buy_price',
     ];
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo

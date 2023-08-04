@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Helpers\AssetIndexHelper;
 use App\Http\Requests\AssetRequest;
 use App\Models\User;
 use App\Models\Asset;
@@ -31,7 +32,8 @@ class AssetsController extends Controller
             $asset = Asset::create([
                 'user_id' => auth()->user()->id,
                 'code' => $request['code'],
-                'type' => $request['type']
+                'type' => $request['type'],
+                'buy_price'=>AssetIndexHelper::getAssetInfo($request['code'])['price']
             ]);
 
             $asset->save();

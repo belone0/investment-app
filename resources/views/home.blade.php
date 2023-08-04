@@ -15,7 +15,7 @@
                 </a>
             </div>
             <div class="col-12 col-md-3 card glass mt-4 " data-tilt data-tilt-max="4" data-tilt-glare data-tilt-max-glare="0.4">
-                <a href="">
+                <a href="{{route('portfolio.index')}}">
                     <div class="card-body ">
                         @include('components.home.picture2')
                         <p class="text-secondary text-center display-5 mb-0">Portfolio </p>
