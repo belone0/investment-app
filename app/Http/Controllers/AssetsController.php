@@ -33,7 +33,9 @@ class AssetsController extends Controller
                 'user_id' => auth()->user()->id,
                 'code' => $request['code'],
                 'type' => $request['type'],
-                'buy_price'=>AssetIndexHelper::getAssetInfo($request['code'])['price']
+
+                //'buy_price'=>AssetIndexHelper::getAssetInfo($request['code'])['price']
+                'buy_price'=>50
             ]);
 
             $asset->save();
