@@ -8,7 +8,7 @@
             </div>
             <div class="row">
                 {{--acoes start--}}
-                <div class="col-3 p-4 ">
+                <div class="col-12 col-lg-3 p-4 ">
                     <h1 class="text-center mb-0 ">Ações</h1>
                     <p class="fs-6 text-center mb-3">Bovespa</p>
                     <form action="{{ route('assets.store') }}" method="POST" class="mb-4 d-flex justify-content-evenly">
@@ -23,12 +23,14 @@
                         </button>
                     </form>
                     @foreach(auth()->user()->acoes as $asset)
-                        <div class=" mb-3 p-1 d-flex justify-content-between">
-                            <i class="fs-3 fa-solid fa-coins"></i>
-                            <p class="fs-5">{{$asset->code}}</p>
-                            <p class="fs-5"><span
-                                    style="font-size: 10px">R$</span>{{\App\Http\Helpers\AssetIndexHelper::getAssetInfo($asset)}}
+                        <div class=" p-1 d-flex justify-content-between">
+                            <i class="fs-4 text-center fa-solid fa-coins"></i>
+                            <p class="fs-6">{{$asset->code}}</p>
+                            <p class="fs-6" style="; color: {{$asset->profitOrPrejudiceColor()}}"><span
+                                    style="font-size: 10px; color: black"> R$ </span>{{\App\Http\Helpers\AssetIndexHelper::getAssetPrice($asset->code,$asset->type)}}
+                                <span style="font-size: 10px">{{$asset->profitOrPrejudiceDifferential()}}</span>
                             </p>
+
                             <form method="POST" action="{{route('assets.destroy',$asset)}}" accept-charset="UTF-8"
                                   style="display:inline">
                                 {{ method_field('DELETE') }}
@@ -43,7 +45,7 @@
                 </div>
                 {{-- acoes end--}}
                 {{--fiis start--}}
-                <div class="col-3 p-4 ">
+                <div class="col-12 col-lg-3 p-4 ">
                     <h1 class="text-center mb-0 ">FIIs</h1>
                     <p class="fs-6 text-center mb-3">Bovespa</p>
                     <form action="{{ route('assets.store') }}" method="POST" class="mb-4 d-flex justify-content-evenly">
@@ -58,11 +60,12 @@
                         </button>
                     </form>
                     @foreach(auth()->user()->fiis as $asset)
-                        <div class=" mb-3 p-1 d-flex justify-content-between">
-                            <i class="fs-3 fa-solid fa-coins"></i>
-                            <p class="fs-5">{{$asset->code}}</p>
-                            <p class="fs-5"><span
-                                    style="font-size: 10px">R$</span>{{\App\Http\Helpers\AssetIndexHelper::getAssetInfo($asset)}}
+                        <div class=" p-1 d-flex justify-content-between">
+                            <i class="fs-4 text-center fa-solid fa-coins"></i>
+                            <p class="mb-0 fs-6">{{$asset->code}}</p>
+                            <p class="fs-6" style="; color: {{$asset->profitOrPrejudiceColor()}}"><span
+                                    style="font-size: 10px; color: black"> R$ </span>{{\App\Http\Helpers\AssetIndexHelper::getAssetPrice($asset->code,$asset->type)}}
+                                <span style="font-size: 10px">{{$asset->profitOrPrejudiceDifferential()}}</span>
                             </p>
                             <form method="POST" action="{{route('assets.destroy',$asset)}}" accept-charset="UTF-8"
                                   style="display:inline">
@@ -78,7 +81,7 @@
                 </div>
                 {{-- fiis end--}}
                 {{--stocks start--}}
-                <div class="col-3 p-4 ">
+                <div class="col-12 col-lg-3 p-4 ">
                     <h1 class="text-center mb-0 ">Stocks</h1>
                     <p class="fs-6 text-center mb-3">Nasdaq</p>
                     <form action="{{ route('assets.store') }}" method="POST" class="mb-4 d-flex justify-content-evenly">
@@ -96,10 +99,11 @@
                     </form>
                     @foreach(auth()->user()->stocks as $asset)
                         <div class=" mb-3 p-1 d-flex justify-content-between">
-                            <i class="fs-3 fa-solid fa-coins"></i>
-                            <p class="fs-5">{{$asset->code}}</p>
-                            <p class="fs-5"><span
-                                    style="font-size: 10px">$</span>{{\App\Http\Helpers\AssetIndexHelper::getAssetInfo($asset)}}
+                            <i class="fs-4 text-center fa-solid fa-coins"></i>
+                            <p class="fs-6">{{$asset->code}}</p>
+                            <p class="fs-6" style="; color: {{$asset->profitOrPrejudiceColor()}}"><span
+                                    style="font-size: 10px; color: black"> R$ </span>{{\App\Http\Helpers\AssetIndexHelper::getAssetPrice($asset->code,$asset->type)}}
+                                <span style="font-size: 10px">{{$asset->profitOrPrejudiceDifferential()}}</span>
                             </p>
                             <form method="POST" action="{{route('assets.destroy',$asset)}}" accept-charset="UTF-8"
                                   style="display:inline">
@@ -115,7 +119,7 @@
                 </div>
                 {{--stocks end--}}
                 {{--crypto start--}}
-                <div class="col-3 p-4 ">
+                <div class="col-12 col-lg-3 p-4 ">
                     <h1 class="text-center mb-0 ">Crypto</h1>
                     <p class="fs-6 text-center mb-3">Most Popular</p>
                     <form action="{{ route('assets.store') }}" method="POST" class="mb-4 d-flex justify-content-evenly">
@@ -131,11 +135,11 @@
                     </form>
                     @foreach(auth()->user()->crypto as $asset)
                         <div class="p-1  mb-3 d-flex justify-content-between">
-                            <img class="me-2" width="30" height="30"
-                                 src="{{\App\Http\Helpers\AssetIndexHelper::getAssetInfo($asset)['image']}}" alt="">
-                            <p class="fs-5">{{$asset->code}}</p>
-                            <p class="fs-5"><span
-                                    style="font-size: 10px">R$</span>{{\App\Http\Helpers\AssetIndexHelper::getAssetInfo($asset)['price']}}
+                            <i class="fs-4 text-center fa-solid fa-coins"></i>
+                            <p class="fs-6">{{$asset->code}}</p>
+                            <p class="fs-6" style="; color: {{$asset->profitOrPrejudiceColor()}}"><span
+                                    style="font-size: 10px; color: black"> R$ </span>{{\App\Http\Helpers\AssetIndexHelper::getAssetPrice($asset->code,$asset->type)}}
+                                <span style="font-size: 10px">{{$asset->profitOrPrejudiceDifferential()}}</span>
                             </p>
                             <form method="POST" action="{{route('assets.destroy',$asset)}}" accept-charset="UTF-8"
                                   style="display:inline">

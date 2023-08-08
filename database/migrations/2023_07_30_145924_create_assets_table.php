@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->foreignIdFor(User::class);
             $table->string('code');
             $table->string('type');
+            $table->float('buy_price');
         });
     }
 };

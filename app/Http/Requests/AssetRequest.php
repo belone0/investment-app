@@ -11,7 +11,6 @@ class AssetRequest extends FormRequest
         return [
             'asset_type'=>'string',
             'asset_code'=>'string',
-
         ];
     }
 }

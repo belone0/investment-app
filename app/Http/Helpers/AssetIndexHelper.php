@@ -46,19 +46,16 @@ class AssetIndexHelper
         return json_decode(file_get_contents('assetIndex/crypto.json'))->coins;
     }
 
-    public static function getAssetInfo(Asset $asset)
+    public static function getAssetPrice($asset_code,$asset_type)
     {
-        if ($asset->type == 'crypto') {
-            $response = Http::get('https://brapi.dev/api/v2/crypto?coin=' . $asset->code . '&currency=BRL');
+        if ($asset_type == 'crypto') {
+            $response = Http::get('https://brapi.dev/api/v2/crypto?coin=' . $asset_code . '&currency=BRL');
             $price = $response['coins'][0]['regularMarketPrice'];
-            $image = $response['coins'][0]['coinImageUrl'];
-            $info['price'] = round($price, 2);
-            $info['image'] = $image;
-            return $info;
+            $price = round($price, 2);
+            return $price;
         }
-
         //if acao or fii
-        $response = Http::get('https://brapi.dev/api/quote/' . $asset->code);
+        $response = Http::get('https://brapi.dev/api/quote/' . $asset_code);
         $price = $response['results'][0]['regularMarketPrice'];
         return $price;
     }

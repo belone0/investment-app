@@ -12,18 +12,18 @@
                     of all your favorite assets</p>
             </div>
         </div>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center mb-5">
             <div class="row d-flex justify-content-end">
                 @include('components.welcome.picture2')
                 <p style="width: fit-content;height: fit-content" class="mt-4 text-center fs-2">One place to store and
                     balance your portfolio</p>
             </div>
         </div>
-        <div class="row ">
+        <div class="row">
             <p class="my-5 text-center display-2">Get started today, <br> for free.</p>
         </div>
 
-        <div class="row d-flex justify-content-center">
+        <div class="mb-5 row d-flex justify-content-center">
             <a href="{{ route('login') }}" class="col-12 col-md-4 p-3 mt-2 btn btn-outline-primary rounded-pill">Get
                 Started</a>
         </div>

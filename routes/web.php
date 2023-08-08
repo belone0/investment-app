@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\{HomeController,AssetsController};
+use \App\Http\Controllers\{HomeController,AssetsController,PortfolioController};
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +23,4 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('assets', AssetsController::class);
+Route::resource('portfolio', PortfolioController::class);
