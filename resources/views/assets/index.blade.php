@@ -102,7 +102,7 @@
                             <i class="fs-4 text-center fa-solid fa-coins"></i>
                             <p class="fs-6">{{$asset->code}}</p>
                             <p class="fs-6" style="; color: {{$asset->profitOrPrejudiceColor()}}"><span
-                                    style="font-size: 10px; color: black"> R$ </span>{{\App\Http\Helpers\AssetIndexHelper::getAssetPrice($asset->code,$asset->type)}}
+                                    style="font-size: 10px; color: black"> $ </span>{{\App\Http\Helpers\AssetIndexHelper::getAssetPrice($asset->code,$asset->type)}}
                                 <span style="font-size: 10px">{{$asset->profitOrPrejudiceDifferential()}}</span>
                             </p>
                             <form method="POST" action="{{route('assets.destroy',$asset)}}" accept-charset="UTF-8"
