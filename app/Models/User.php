@@ -29,21 +29,38 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function assets(): HasMany
+    {
+        return $this->hasMany(Asset::class);
+    }
+
     public function crypto(): HasMany
     {
-        return $this->hasMany(Asset::class)->where('type','crypto');
+        return $this->hasMany(Asset::class)->where('type', 'crypto');
     }
+
     public function acoes(): HasMany
     {
-        return $this->hasMany(Asset::class)->where('type','acao');
+        return $this->hasMany(Asset::class)->where('type', 'acao');
     }
+
     public function fiis(): HasMany
     {
-        return $this->hasMany(Asset::class)->where('type','fii');
+        return $this->hasMany(Asset::class)->where('type', 'fii');
     }
+
     public function stocks(): HasMany
     {
-        return $this->hasMany(Asset::class)->where('type','stock');
+        return $this->hasMany(Asset::class)->where('type', 'stock');
+    }
+
+    public function portfolioValue()
+    {
+        $value = 0;
+        foreach ($this->assets as $asset) {
+            $value += AssetIndexHelper::getAssetPrice($asset->code, $asset->type);
+        }
+        return $value;
     }
 
 }

@@ -156,12 +156,12 @@
             </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
-    <script>
-        $('.js-example-basic-single').select2({
-            placeholder: 'Selecione um ativo',
-            theme: 'bootstrap'
-        });
-    </script>
+        <script src="{{asset('js/jquery.min.js')}}"></script>
+        <script src="{{asset('js/select2.min.js')}}"></script>
+        <script>
+            $('.js-example-basic-single').select2({
+                placeholder: 'Selecione um ativo',
+                theme: 'bootstrap'
+            });
+        </script>
 @endsection
