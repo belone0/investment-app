@@ -22,7 +22,7 @@
                         <button type="submit" class=" btn"><i class="text-primary fa-solid fa-add"></i>
                         </button>
                     </form>
-                    @foreach(auth()->user()->acoes as $asset)
+                    @foreach(auth()->user()->assetIndexByType('acao')->get() as $asset)
                         <div class=" p-1 d-flex justify-content-between">
                             <i class="fs-4 text-center fa-solid fa-coins"></i>
                             <p class="fs-6">{{$asset->code}}</p>
@@ -59,7 +59,7 @@
                         <button type="submit" class=" btn"><i class="text-primary fa-solid fa-add"></i>
                         </button>
                     </form>
-                    @foreach(auth()->user()->fiis as $asset)
+                    @foreach(auth()->user()->assetIndexByType('fii')->get() as $asset)
                         <div class=" p-1 d-flex justify-content-between">
                             <i class="fs-4 text-center fa-solid fa-coins"></i>
                             <p class="mb-0 fs-6">{{$asset->code}}</p>
@@ -97,7 +97,7 @@
                         <button type="submit" class=" btn"><i class="text-primary fa-solid fa-add"></i>
                         </button>
                     </form>
-                    @foreach(auth()->user()->stocks as $asset)
+                    @foreach(auth()->user()->assetIndexByType('stock')->get() as $asset)
                         <div class=" mb-3 p-1 d-flex justify-content-between">
                             <i class="fs-4 text-center fa-solid fa-coins"></i>
                             <p class="fs-6">{{$asset->code}}</p>
@@ -133,7 +133,7 @@
                         <button type="submit" class=" btn"><i class="text-primary fa-solid fa-add"></i>
                         </button>
                     </form>
-                    @foreach(auth()->user()->crypto as $asset)
+                    @foreach(auth()->user()->assetIndexByType('crypto')->get() as $asset)
                         <div class="p-1  mb-3 d-flex justify-content-between">
                             <i class="fs-4 text-center fa-solid fa-coins"></i>
                             <p class="fs-6">{{$asset->code}}</p>

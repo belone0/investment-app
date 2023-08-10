@@ -35,24 +35,9 @@ class User extends Authenticatable
         return $this->hasMany(Asset::class);
     }
 
-    public function crypto(): HasMany
+    public function assetIndexByType($type): HasMany
     {
-        return $this->hasMany(Asset::class)->where('type', 'crypto');
-    }
-
-    public function acoes(): HasMany
-    {
-        return $this->hasMany(Asset::class)->where('type', 'acao');
-    }
-
-    public function fiis(): HasMany
-    {
-        return $this->hasMany(Asset::class)->where('type', 'fii');
-    }
-
-    public function stocks(): HasMany
-    {
-        return $this->hasMany(Asset::class)->where('type', 'stock');
+        return $this->hasMany(Asset::class)->where('type', $type);
     }
 
     public function portfolioValue()
