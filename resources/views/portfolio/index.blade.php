@@ -8,6 +8,10 @@
             </div>
             <div class="row">
                 <p>Total value: {{$portfolio_value}}</p>
+                <p>Acoes value: {{$acoes_value}}</p>
+                <p>Fiis value: {{$fiis_value}}</p>
+                <p>Stocks value: {{$stocks_value}}</p>
+                <p>Crypto value: {{$crypto_value}}</p>
             </div>
         </div>
     </div>

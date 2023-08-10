@@ -59,4 +59,9 @@ class AssetIndexHelper
         $price = $response['results'][0]['regularMarketPrice'];
         return $price;
     }
+
+    public static function getDolarValueInReais(){
+        $response = Http::get('https://economia.awesomeapi.com.br/last/USD-BRL');
+        return $response['USDBRL']['ask'];
+    }
 }

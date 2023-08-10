@@ -9,10 +9,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Traits\UserAssetTrait;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, UserAssetTrait;
 
     protected $fillable = [
         'name',
@@ -49,4 +50,17 @@ class User extends Authenticatable
         return $value;
     }
 
+    public function assetsValueByType($type)
+    {
+        $value = 0;
+        foreach ($this->assetIndexByType($type)->get() as $asset) {
+            $asset_price = AssetIndexHelper::getAssetPrice($asset->code, $asset->type);
+            if ($asset->type == 'stock') {
+                $asset_price *= AssetIndexHelper::getDolarValueInReais();
+            }
+            $value += $asset_price;
+        }
+        return round($value,2);
+    }
+    
 }
