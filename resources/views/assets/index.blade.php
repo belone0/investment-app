@@ -4,7 +4,7 @@
         <div class="card glass p-5">
             <div class="card-body">
                 <p class=" text-center display-2  mt-5">My Assets</p>
-                <p class=" text-center display-2 fs-4 mb-5">One place to track all your favorite assets!</p>
+                <p class=" text-center display-2 fs-4 mb-5">Keep track all your favorite assets!</p>
             </div>
             <div class="row">
                 {{--acoes start--}}

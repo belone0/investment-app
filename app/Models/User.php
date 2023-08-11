@@ -41,26 +41,4 @@ class User extends Authenticatable
         return $this->hasMany(Asset::class)->where('type', $type);
     }
 
-    public function portfolioValue()
-    {
-        $value = 0;
-        foreach ($this->assets as $asset) {
-            $value += AssetIndexHelper::getAssetPrice($asset->code, $asset->type);
-        }
-        return $value;
-    }
-
-    public function assetsValueByType($type)
-    {
-        $value = 0;
-        foreach ($this->assetIndexByType($type)->get() as $asset) {
-            $asset_price = AssetIndexHelper::getAssetPrice($asset->code, $asset->type);
-            if ($asset->type == 'stock') {
-                $asset_price *= AssetIndexHelper::getDolarValueInReais();
-            }
-            $value += $asset_price;
-        }
-        return round($value,2);
-    }
-    
 }

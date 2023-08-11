@@ -8,15 +8,14 @@
         <div class="d-flex justify-content-center">
             <div class="row d-flex justify-content-start">
                 @include('components.welcome.picture1')
-                <p style="width: fit-content;height: fit-content" class="mt-4 text-center fs-2">One place to keep track
+                <p style="width: fit-content;height: fit-content" class="mt-4 text-center fs-2">Keep track
                     of all your favorite assets</p>
             </div>
         </div>
         <div class="d-flex justify-content-center mb-5">
             <div class="row d-flex justify-content-end">
                 @include('components.welcome.picture2')
-                <p style="width: fit-content;height: fit-content" class="mt-4 text-center fs-2">One place to store and
-                    balance your portfolio</p>
+                <p style="width: fit-content;height: fit-content" class="mt-4 text-center fs-2">Balance your asset portfolio</p>
             </div>
         </div>
         <div class="row">
