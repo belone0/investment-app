@@ -7,7 +7,14 @@
                 <p class=" text-center display-2 fs-4 mb-5">Balance your portfolio</p>
             </div>
             <div class="row">
+                <div class="col-6 col-md-3">
+                    @if(!auth()->user()->targetPosition())
+                        <p>First, chose a target position</p>
+                        <form action="">
 
+                        </form>
+                    @endif
+                </div>
             </div>
         </div>
     </div>

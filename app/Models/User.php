@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Http\Controllers\PortfolioController;
 use App\Http\Helpers\AssetIndexHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -39,6 +40,17 @@ class User extends Authenticatable
     public function assetIndexByType($type): HasMany
     {
         return $this->hasMany(Asset::class)->where('type', $type);
+    }
+
+    public function portfolio(){
+        return $this->hasOne(Portfolio::class);
+    }
+
+    public function targetPosition(){
+        return $this->hasMany(Position::class)->where('type','target')->first();
+    }
+    public function actualPosition(){
+        return $this->hasMany(Position::class)->where('type','actual')->first();
     }
 
 }
