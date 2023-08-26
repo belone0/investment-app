@@ -10,11 +10,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Traits\UserAssetTrait;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, UserAssetTrait;
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
         'name',

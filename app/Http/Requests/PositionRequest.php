@@ -9,10 +9,10 @@ class PositionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'acoes'=>'float',
-            'fiis'=>'float',
-            'stocks'=>'float',
-            'crypto'=>'float',
+            'acoes'=>'integer',
+            'fiis'=>'integer',
+            'stocks'=>'integer',
+            'crypto'=>'integer',
             'type'=>'string',
         ];
     }
