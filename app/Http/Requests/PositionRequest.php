@@ -13,7 +13,6 @@ class PositionRequest extends FormRequest
             'fiis'=>'integer',
             'stocks'=>'integer',
             'crypto'=>'integer',
-            'type'=>'string',
         ];
     }
 }

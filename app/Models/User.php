@@ -46,10 +46,10 @@ class User extends Authenticatable
     }
 
     public function targetPosition(){
-        return $this->hasMany(Position::class)->where('type','target')->first();
+        return $this->hasOne(Position::class)->first();
     }
-    public function actualPosition(){
-        return $this->hasMany(Position::class)->where('type','actual')->first();
-    }
+//    public function actualPosition(){
+//        return $this->hasMany(Position::class)->where('type','actual')->first();
+//    }
 
 }
