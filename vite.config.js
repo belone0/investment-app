@@ -18,10 +18,5 @@ export default defineConfig({
             '~bootstrap': path.resolve(__dirname, 'bootstrap'),
             '$': 'jQuery'
         }
-    },
-    sassOptions: {
-        includePaths: [path.join(__dirname, 'styles')],
-        prependData: `@import "./resources/sass/_variables.scss";`,
-    },
-
+    }
 });
