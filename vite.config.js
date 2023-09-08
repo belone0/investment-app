@@ -19,4 +19,9 @@ export default defineConfig({
             '$': 'jQuery'
         }
     },
+    sassOptions: {
+        includePaths: [path.join(__dirname, 'styles')],
+        prependData: `@import "./resources/sass/_variables.scss";`,
+    },
+
 });
