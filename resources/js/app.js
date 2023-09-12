@@ -6,3 +6,4 @@ window.$ = jQuery
 import './vanilla-tilt.js'
 import '../../public/js/jquery.min.js'
 import '../../public/js/select2.min.js'
+import '../css/app.css';
