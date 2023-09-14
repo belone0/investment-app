@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <link rel="stylesheet" href="../../css/app.css">
-    <link rel="stylesheet" href="../../css/bootstrap.css">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    @vite(['resources/sass/app.scss', 'resources/js/app.js',])
+    @vite(['assets/sass/app.scss', 'assets/js/app.js','assets/css/bootstrap.css','assets/css/app.css'])
 </head>
 <body>
 <div id="app">
