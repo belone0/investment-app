@@ -1,3 +1,6 @@
+#welcome-p{
+    display: none;
+}
 body{
     background-color:hsla(110,0%,100%,1);
     background-image:
