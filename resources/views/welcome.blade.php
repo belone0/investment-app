@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row ">
-            <p class="mt-5 text-center display-2">Welcome to myasset.</p>
+            <p style="display: none" class="mt-5 text-center display-2">Welcome to myasset.</p>
             <p class="fs-2 mb-5 text-center">The best place to manage your asset portfolio</p>
         </div>
         <div class="d-flex justify-content-center">
