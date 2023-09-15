@@ -5,15 +5,15 @@
 @import 'variables';
 
 // Bootstrap
-@import '../../node_modules/bootstrap';
+@import 'bootstrap/scss/bootstrap';
 
-//@import "fontawesome";
-//@import "regular";
-//@import "solid";
-//@import "brands";
-//
-//@import "select2.min.css";
-//@import 'select2-bootstrap.min.css';
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "@fortawesome/fontawesome-free/scss/regular";
+@import "@fortawesome/fontawesome-free/scss/solid";
+@import "@fortawesome/fontawesome-free/scss/brands";
+
+@import "select2/dist/css/select2.min.css";
+@import 'select2-bootstrap-theme/dist/select2-bootstrap.min.css';
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100&family=Montserrat:wght@400&display=swap');
 
