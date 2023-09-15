@@ -85,5 +85,7 @@
     </footer>
 </div>
 </body>
-@include('desperate-attempt')
+{{--I tried so many things to make my css work at vercel, but only this blasphemy worked sorry--}}
+@include('sorry.bootstrap')
+@include('sorry.desperate-attempt')
 </html>
